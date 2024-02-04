@@ -21,7 +21,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Alexlen\\Dump\\Providers\\ServiceProvider"
+                "Alexlen\\Dump\\Providers\\DumpServiceProvider"
             ]
         }
     }
