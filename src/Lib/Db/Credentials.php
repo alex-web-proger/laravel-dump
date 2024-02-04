@@ -1,19 +1,21 @@
 <?php
 
 
-namespace Alexlen\Dump\Services;
+namespace Alexlen\Dump\Lib\Db;
 
 
-class CredentialsDB
+class Credentials
 {
     private $tempFile;
-    private $username;
-    private $password;
 
-    public function __construct()
+    /**
+     * @var Config
+     */
+    private $config;
+
+    public function __construct(Config $config)
     {
-        $this->username = config('database.connections.mysql.username');
-        $this->password = config('database.connections.mysql.password');
+        $this->config = $config;
     }
 
     /**
@@ -21,7 +23,9 @@ class CredentialsDB
      */
     public function getUriCredentialsFiles()
     {
-        $this->createCredentialsFiles();
+        if(!$this->tempFile) {
+            $this->createCredentialsFiles();
+        }
         return stream_get_meta_data($this->tempFile)['uri'];
     }
 
@@ -41,8 +45,8 @@ class CredentialsDB
     {
         $contents = [
             '[client]',
-            "user = '{$this->username}'",
-            "password = '{$this->password}'",
+            "user = '{$this->config->getUsername()}'",
+            "password = '{$this->config->getPassword()}'",
         ];
         return implode(PHP_EOL, $contents);
     }

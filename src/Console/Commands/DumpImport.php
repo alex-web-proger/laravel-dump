@@ -2,7 +2,9 @@
 
 namespace Alexlen\Dump\Console\Commands;
 
-use Alexlen\Dump\Services\DumpDB;
+use Alexlen\Dump\Lib\Db\BackupDump;
+use Alexlen\Dump\Lib\Db\Dump;
+use Alexlen\Dump\Lib\Storage\StorageDump;
 use Illuminate\Console\Command;
 
 class DumpImport extends Command
@@ -11,38 +13,72 @@ class DumpImport extends Command
 
     protected $description = 'Import a database dump';
 
-    public function handle(DumpDB $dump)
+
+    public function handle(Dump $dump)
     {
         $filename = $this->argument('filename');
 
-        // Убедиться в существовании файла дампа БД
-        if (!$dump->existsFile($filename)) {
-            $this->error("Файл $filename не найден!");
+        if (!$this->checkExistsFile($filename)) {
             return;
         }
 
-        if (!$this->confirm("Вы уверены, что хотите импортировать дамп $filename в БД?")) {
-            $this->info('Импорт дампа в базу данных отменен');
+        if (!$this->checkConfirm($filename)) {
             return;
         }
 
-        // Создать бекап
+        if(!$this->backup($dump)){
+           return;
+        }
+
+        $this->info('Импорт дампа в базу данных...');
+
+        if (!$dump->import($filename)) {
+            $this->error("Ошибка импорта дампа");
+        }else {
+            $this->info('Импорт успешно выполнен');
+        }
+    }
+
+
+    // Проверка существования файла дампа БД
+    private function checkExistsFile($filename)
+    {
+        $storage = new StorageDump();
+        if ($storage->existsFile($filename)) {
+            return true;
+        }
+        $this->error("Файл $filename не найден!");
+    }
+
+
+    // Уточнить серьезность намерений
+    private function checkConfirm($filename)
+    {
+        if ($this->confirm("Вы уверены, что хотите импортировать дамп $filename в БД?")) {
+            return true;
+        }
+        $this->info('Импорт дампа в базу данных отменен');
+    }
+
+
+    // Бекап
+    private function backup(Dump $dump)
+    {
         $noBackup = $this->option('no-backup');
+
         if (!$noBackup || !$this->confirm('Вы уверены, что не хотите делать бекап?')) {
+
             $this->info('Создание бекапа...');
-            if (!$dump->backup()) {
+
+            $backup = new BackupDump($dump);
+
+            if (!$backup->backup()) {
                 $this->error("Ошибка при создании бекапа");
                 return;
             }
             $this->info('Бекап успешно создан');
-        }
 
-        // Импортировать дамп
-        $this->info('Импорт дампа в базу данных...');
-        if (!$dump->import($filename)) {
-            $this->error("Ошибка импорта дампа");
-            return;
         }
-        $this->info('Импорт успешно выполнен');
+        return true;
     }
 }
