@@ -3,6 +3,7 @@
 namespace Alexlen\Dump\Providers;
 
 use Alexlen\Dump\Console\Commands\DumpExport;
+use Alexlen\Dump\Console\Commands\DumpHelp;
 use Alexlen\Dump\Console\Commands\DumpImport;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +26,7 @@ class DumpServiceProvider extends ServiceProvider
             $this->commands([
                 DumpExport::class,
                 DumpImport::class,
+                DumpHelp::class,
             ]);
         }
     }
