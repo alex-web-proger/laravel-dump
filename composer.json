@@ -1,0 +1,21 @@
+{
+    "name": "alexlen/laravel-dump",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alexlen",
+            "email": "alex.web.proger@gmail.com",
+            "homepage": "https://github.com/alex-web-proger"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alexlen\\Dump\\": "src"
+        }
+    }
+}
