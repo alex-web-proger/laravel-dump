@@ -2,7 +2,7 @@
 
 namespace Alexlen\Dump\Console\Commands;
 
-use Alexlen\Dump\Services\Dump;
+use Alexlen\Dump\Services\DumpDB;
 use Illuminate\Console\Command;
 
 class DumpImport extends Command
@@ -12,7 +12,7 @@ class DumpImport extends Command
 
     protected $description = 'Import a database dump';
 
-    public function handle(Dump $dump)
+    public function handle(DumpDB $dump)
     {
         $filename = $this->argument('filename');
 

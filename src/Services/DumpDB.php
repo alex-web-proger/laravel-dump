@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * Импорт/экспорт базы данных
  */
-class Dump
+class DumpDB
 {
     protected $database;
     protected $basePath;

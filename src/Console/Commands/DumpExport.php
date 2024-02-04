@@ -2,7 +2,7 @@
 
 namespace Alexlen\Dump\Console\Commands;
 
-use Alexlen\Dump\Services\Dump;
+use Alexlen\Dump\Services\DumpDB;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -12,7 +12,7 @@ class DumpExport extends Command
 
     protected $description = 'Export a database dump';
 
-    public function handle(Dump $dump)
+    public function handle(DumpDB $dump)
     {
         $table = $this->option('table');
 
