@@ -17,5 +17,12 @@
         "psr-4": {
             "Alexlen\\Dump\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alexlen\\Dump\\Providers\\ServiceProvider"
+            ]
+        }
     }
 }
