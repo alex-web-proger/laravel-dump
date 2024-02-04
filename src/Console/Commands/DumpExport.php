@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class DumpExport extends Command
 {
-    protected $signature = 'app:dump-export {filename?} {--table=}';
+    protected $signature = 'alexlen:dump-export {filename?} {--table=}';
 
     protected $description = 'Export a database dump';
 

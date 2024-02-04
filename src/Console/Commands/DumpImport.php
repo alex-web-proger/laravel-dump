@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 class DumpImport extends Command
 {
 
-    protected $signature = 'app:dump-import {filename} {--no-backup}';
+    protected $signature = 'alexlen:dump-import {filename} {--no-backup}';
 
     protected $description = 'Import a database dump';
 
