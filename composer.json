@@ -1,6 +1,6 @@
 {
     "name": "alexlen/laravel-dump",
-    "version": "1.2.0",
+    "version": "1.2.2",
     "description": "Export/import database",
     "minimum-stability": "stable",
     "license": "MIT",
