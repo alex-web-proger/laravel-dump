@@ -1,6 +1,6 @@
 {
     "name": "alexlen/laravel-dump",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Export/import database",
     "minimum-stability": "stable",
     "license": "MIT",
@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "alexlen/laravel-dump-lib": "^1.2"
     },
     "autoload": {
         "psr-4": {
