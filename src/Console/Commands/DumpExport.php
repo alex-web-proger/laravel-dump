@@ -2,7 +2,7 @@
 
 namespace Alexlen\Dump\Console\Commands;
 
-use Alexlen\Dump\Lib\Db\Dump;
+use Alexlen\DumpLib\Db\Dump;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -10,7 +10,7 @@ class DumpExport extends Command
 {
     protected $signature = 'alexlen:dump-export {filename?} {--table=}';
 
-    protected $description = 'Export a database dump';
+    protected $description = 'Экспорт базы данных или таблицы в файл';
 
     public function handle(Dump $dump)
     {

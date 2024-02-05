@@ -19,13 +19,13 @@ class BackupDump
         $this->dump = $dump;
     }
 
-    public function backup()
+    public function backup($filename = false)
     {
         $storage = new StorageDump();
 
         $backupDir = $storage->getBackupDir();
 
-        $filename = "$backupDir/" . FilenameHelper::backupFilename();
+        $filename = "$backupDir/" . FilenameHelper::backupFilename($filename);
 
         return $this->dump->export($filename);
     }

@@ -16,23 +16,65 @@
 
 ### Примеры
 
-Отобразить описание пакета
-```sh
-  php artisan alexlen:dump-help
-```
-Создать дамп БД. Имя файла создается автоматически
-```sh
-  php artisan alexlen:dump-export
-```
-Создать дамп БД с именем my_dump.sql
-```sh
-  php artisan alexlen:dump-export my_dump.sql
-```
- Создать дамп таблицы users
-```sh
-  php artisan alexlen:dump-export --table=users
-```
-Импортировать дамп в БД
-```sh
-  php artisan alexlen:dump-import my_dump.sql
-```
+<table>
+    <thead>
+        <tr>
+            <th>Команда</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>php artisan alexlen:dump-help</td>
+            <td>Отобразить описание пакета</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-export</td>
+             <td>Создать дамп БД с дефолтным именем файла</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-export my_dump.sql</td>
+             <td>Создать дамп БД с именем my_dump.sql</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-export --table=users</td>
+             <td>Создать дамп таблицы users</td>
+        </tr>
+        <tr>
+             <td> php artisan alexlen:dump-import my_dump.sql</td>
+             <td>Импортировать дамп в БД</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-backup</td>
+             <td>Создать бекап с дефолтным именем файла</td>
+        </tr>
+        <tr>
+             <td> php artisan alexlen:dump-backup my_backup</td>
+             <td>Создать бекап с именем файла my_backup</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-backup --list</td>
+             <td> Список файлов бекапа</td>
+        </tr>   
+        <tr>
+             <td>php artisan alexlen:dump-backup-clear</td>
+             <td>Выбор файла бекапа для удаления</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-backup-clear --last</td>
+             <td>Удалить последний файл бекапа</td>
+        </tr>
+        <tr>
+             <td> php artisan alexlen:dump-backup-clear --all</td>
+             <td>  Очистить папку с файлами бекапа</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-restore</td>
+             <td> Выбор файла бекапа и его импорт</td>
+        </tr>
+        <tr>
+             <td>php artisan alexlen:dump-restore --last</td>
+             <td>Импорт последнего файла бекапа</td>
+        </tr>                                                                                     
+    </tbody>
+</table>

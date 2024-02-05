@@ -2,16 +2,16 @@
 
 namespace Alexlen\Dump\Console\Commands;
 
-use Alexlen\Dump\Lib\Db\BackupDump;
-use Alexlen\Dump\Lib\Db\Dump;
-use Alexlen\Dump\Lib\Storage\StorageDump;
+use Alexlen\DumpLib\Db\BackupDump;
+use Alexlen\DumpLib\Db\Dump;
+use Alexlen\DumpLib\Storage\StorageDump;
 use Illuminate\Console\Command;
 
 class DumpImport extends Command
 {
     protected $signature = 'alexlen:dump-import {filename} {--no-backup}';
 
-    protected $description = 'Import a database dump';
+    protected $description = 'Импорт указанного файла';
 
 
     public function handle(Dump $dump)
